@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #25b383;
+}
+
+.header{
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.container{
+    width: 90%;
+    max-width: 500px;
+
+    margin: 30px auto;
+    padding: 20px;
+
+    background-color: white;
+
+    border-radius: 10px;
+}
+
+.form{
+    display: flex;
+    gap: 10px;
+}
+
+.input-tarea{
+    flex: 1;
+
+    padding: 10px;
+
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.btn-tarea{
+    padding: 10px 15px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #4a90e2;
+    color: white;
+
+    cursor: pointer;
+}
+
+.btn-tarea:hover{
+    background-color: #357abd;
+}
+
+.lista-tareas{
+    list-style: none;
+
+    margin-top: 20px;
+}
+
+.tareas{
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+
+    background-color: #dcd7d7;
+
+    border-radius: 5px;
+}
+
+.completada{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.botones{
+    display: flex;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.btn-eliminar-complet,
+.btn-eliminar-todas{
+
+    flex: 1;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.btn-eliminar-complet{
+    background-color: orange;
+}
+
+.btn-eliminar-complet:hover{
+    background-color: darkorange;
+}
+
+.btn-eliminar-todas{
+    background-color: crimson;
+}
+
+.btn-eliminar-todas:hover{
+    background-color: darkred;
+}
+
+.footer{
+    text-align: center;
+
+    padding: 20px;
+    margin-top: 20px;
+
+    color: white;
+}
+
+.footer ul{
+    list-style: none;
+}
+
+@media(max-width:600px){
+
+    .form{
+        flex-direction: column;
+    }
+
+    .botones{
+        flex-direction: column;
+    }
+}
