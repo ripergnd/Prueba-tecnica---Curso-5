@@ -1,64 +1,61 @@
-# Prueba-tecnica---Curso-5
+Prueba Técnica - Curso 5: To Do List
 
-To Do List 📝
+Una aplicación web sencilla de lista de tareas desarrollada con HTML, CSS y JavaScript. 
 
-Aplicación web sencilla de lista de tareas desarrollada con HTML, CSS y JavaScript.
 Permite añadir tareas, marcarlas como completadas, eliminarlas y guardar la información mediante localStorage.
 
-
 Características:
+- Añadir nuevas tareas
+- Marcar tareas como completadas
+- Eliminar tareas completadas
+- Eliminar todas las tareas
+- Guardado automático con localStorage
+- Diseño responsive para móviles
 
-·Añadir nuevas tareas
-·Marcar tareas como completadas
-·Eliminar tareas completadas
-·Eliminar todas las tareas
-·Guardado automático con localStorage
-·Diseño responsive para móviles
+Tecnologías Utilizadas:
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
 
-
-
-Tecnologías utilizadas:
-·HTML5
-·CSS
-·JavaScript
-
-
-Estructura del proyecto:
-/
-├── index.html
-├── script.js
-└── CSS/
+Estructura del Proyecto:
+- proyecto/ 
+- ├── index.html 
+- ├── script.js 
+- └── CSS/ 
     └── Styles.css
 
-
 Funcionamiento:
-Añadir tareas
 
-El usuario puede escribir una tarea en el input y añadirla mediante el botón Añadir y la tecla Enter.
+- Añadir Tareas
+- El usuario puede escribir una tarea en el input y añadirla mediante:
+- El botón "Añadir"
+- La tecla **Enter**
+- Marcar Completadas
+  
+Cada tarea tiene un checkbox que permite marcarlas como completadas:
 
-Cada tarea tiene un checkbox que permite marcarla como completada.
+- Aparecen tachadas
+- Tienen menor opacidad visual
 
-Las tareas completadas:
+Persistencia de Datos:
 
-·Aparecen tachadas
-·Tienen menor opacidad visual
+Al recargar la página, las tareas permanecen guardadas gracias a **localStorage**.
 
-Al recargar la página, las tareas permanecen guardadas.
+Diseño Responsive:
 
+La aplicación incluye media queries para mejorar la experiencia en dispositivos móviles 
+(optimizado para pantallas < 600px).
 
-Responsive Design:
+---
 
-La aplicación incluye una media query para mejorar la experiencia en dispositivos móviles:
+Cómo Ejecutar el Proyecto:
 
-@media(max-width:600px)
+1. Descargar o clonar el repositorio
+2. Abrir index.html en el navegador
 
-
-Cómo ejecutar el proyecto:
-
-·Descargar o clonar el repositorio
-·Abrir index.html en el navegador
-
+   ```bash
+   git clone https://github.com/ripergnd/Prueba-tecnica---Curso-5.git
 
 Autor:
 
-Proyecto desarrollado por Laurentiu Patrunjel.
+Proyecto desarrollado por Laurentiu Patrunjel
