@@ -16,6 +16,7 @@ Características:
 ·Diseño responsive para móviles
 
 
+
 Tecnologías utilizadas:
 ·HTML5
 ·CSS
