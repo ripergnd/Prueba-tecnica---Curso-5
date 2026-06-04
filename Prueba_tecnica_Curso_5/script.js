@@ -76,6 +76,15 @@ function agregarTarea() {
         return;
     }
 
+    const existe = tareas.some(
+        tarea => tarea.texto.toLowerCase() === texto.toLowerCase()
+    );
+
+    if (existe) {
+        alert("Esa tarea ya existe");
+        return;
+    }
+
     tareas.push({
         id: Date.now(),
         texto: texto,

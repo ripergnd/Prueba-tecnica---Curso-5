@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Fondo general */
 body {
     font-family: Arial, sans-serif;
@@ -26,17 +27,20 @@ body {
     padding: 30px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Formulario */
 .form {
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }
-/* Input y botón */
+
+/* Input */
 .input-tarea {
-    flex: 10; 
+    flex: 10;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -62,24 +66,41 @@ body {
     margin-top: 20px;
 }
 
-/* tareas */
+/* Cada tarea */
 .tareas {
     display: flex;
-    justify-content: flex-start; 
     align-items: center;
+    gap: 10px; /* separación entre checkbox y texto */
     background-color: #f9f9f9;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
 
-/* Botones */
+/* Checkbox */
+.checkbox-tarea {
+    cursor: pointer;
+}
+
+/* Texto de la tarea */
+.texto-tarea {
+    flex: 1;
+}
+
+/* Tachar texto cuando la checkbox está marcada */
+.checkbox-tarea:checked + .texto-tarea {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Botones inferiores */
 .botones {
     margin-top: 20px;
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     gap: 185px;
 }
+
 .btn-eliminar-complet,
 .btn-eliminar-todas {
     padding: 10px;
@@ -87,17 +108,21 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .btn-eliminar-complet {
     background-color: #f5a623;
     color: white;
 }
+
 .btn-eliminar-todas {
     background-color: #d0021b;
     color: white;
 }
+
 .btn-eliminar-complet:hover {
     background-color: #d4881c;
 }
+
 .btn-eliminar-todas:hover {
     background-color: #a00115;
 }
@@ -110,8 +135,13 @@ body {
     margin-top: 20px;
     color: white;
 }
-footer ul{
-    list-style: none;  /* eliminar los puntos */
-  padding: 0;        
-  margin: 0;
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.completada {
+    text-decoration: line-through;
+    color: #888;
 }
