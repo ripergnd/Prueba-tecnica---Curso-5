@@ -1,94 +1,124 @@
 "use strict";
 
 const input = document.querySelector("#input-tarea");
-const btnAgregar = document.querySelector(".btn-tarea");
 const lista = document.querySelector(".lista-tareas");
 
+const btnAgregar = document.querySelector(".btn-tarea");
 const btnEliminarCompletadas = document.querySelector(".btn-eliminar-complet");
 const btnEliminarTodas = document.querySelector(".btn-eliminar-todas");
 
+let tareas = [];
+
+/*CARGAR DATOS*/
 
 window.addEventListener("DOMContentLoaded", () => {
 
-    const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+    tareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
-    tareas.forEach(tarea => {
-        crearTarea(tarea.texto, tarea.completada);
-    });
+    renderTareas();
 });
+
+/*LOCAL STORAGE*/
 
 function guardarTareas() {
 
-    const tareas = [];
-
-    const elementos = document.querySelectorAll(".tareas");
-
-    elementos.forEach(li => {
-
-        const texto = li.querySelector("span").textContent;
-
-        const completada = li.querySelector("input").checked;
-
-        tareas.push({
-            texto: texto,
-            completada: completada
-        });
-    });
-
-    localStorage.setItem("tareas", JSON.stringify(tareas));
+    localStorage.setItem(
+        "tareas",
+        JSON.stringify(tareas)
+    );
 }
 
-function crearTarea(texto, completada = false) {
+/*RENDER*/
 
+function renderTareas() {
 
-    const li = document.createElement("li");
-    li.classList.add("tareas");
+    lista.innerHTML = "";
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = completada;
+    tareas.forEach(tarea => {
 
-    const span = document.createElement("span");
-    span.textContent = texto;
+        const li = document.createElement("li");
+        li.classList.add("tareas");
 
-   
-    if (completada) {
-        span.classList.add("completada");
-    }
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = tarea.completada;
 
-  
-    checkbox.addEventListener("change", () => {
+        const span = document.createElement("span");
+        span.textContent = tarea.texto;
 
-        if (checkbox.checked) {
+        if (tarea.completada) {
             span.classList.add("completada");
-        } else {
-            span.classList.remove("completada");
         }
 
-        guardarTareas();
+        checkbox.addEventListener("change", () => {
+
+            tarea.completada = checkbox.checked;
+
+            guardarTareas();
+            renderTareas();
+        });
+
+        li.appendChild(checkbox);
+        li.appendChild(span);
+
+        lista.appendChild(li);
     });
-
-    li.appendChild(checkbox);
-    li.appendChild(span);
-
-    lista.appendChild(li);
-
-    guardarTareas();
 }
+
+/*CRUD*/
 
 function agregarTarea() {
 
     const texto = input.value.trim();
 
-   
     if (texto === "") {
+        alert("Introduce una tarea");
         return;
     }
 
-    crearTarea(texto);
+    tareas.push({
+        id: Date.now(),
+        texto: texto,
+        completada: false
+    });
+
+    guardarTareas();
+    renderTareas();
 
     input.value = "";
 }
+
+function eliminarCompletadas() {
+
+    const confirmar = confirm(
+        "¿Eliminar todas las tareas completadas?"
+    );
+
+    if (!confirmar) return;
+
+    tareas = tareas.filter(
+        tarea => !tarea.completada
+    );
+
+    guardarTareas();
+    renderTareas();
+}
+
+function eliminarTodas() {
+
+    const confirmar = confirm(
+        "¿Eliminar todas las tareas?"
+    );
+
+    if (!confirmar) return;
+
+    tareas = [];
+
+    guardarTareas();
+    renderTareas();
+}
+
+/*EVENTO*/
 
 btnAgregar.addEventListener("click", (e) => {
 
@@ -96,8 +126,6 @@ btnAgregar.addEventListener("click", (e) => {
 
     agregarTarea();
 });
-
-
 
 input.addEventListener("keydown", (e) => {
 
@@ -109,24 +137,12 @@ input.addEventListener("keydown", (e) => {
     }
 });
 
-btnEliminarCompletadas.addEventListener("click", () => {
+btnEliminarCompletadas.addEventListener(
+    "click",
+    eliminarCompletadas
+);
 
-    const tareas = document.querySelectorAll(".tareas");
-
-    tareas.forEach(tarea => {
-
-        const checkbox = tarea.querySelector("input");
-
-        if (checkbox.checked) {
-            tarea.remove();
-        }
-    });
-
-    guardarTareas();
-});
-btnEliminarTodas.addEventListener("click", () => {
-
-    lista.innerHTML = "";
-
-    guardarTareas();
-});
+btnEliminarTodas.addEventListener(
+    "click",
+    eliminarTodas
+);
